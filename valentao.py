@@ -12,8 +12,8 @@ me = None
 class Process:
   def __init__(self, id):
     self.id = id
-    self.active = True
-    self.leader = None
+    self.leaderStatus = False
+    self.leader = ''
     self.bullies = []
 
   def __strt__(self):
@@ -39,7 +39,19 @@ def who_is_leader(sock, sender, msg):
       election(sock)
     else:
       me.accept_leader(sender)
+      me.leaderStatus = True
       print(f'{me.id} my leader is {me.leader}')
+
+def leader_health(sock):
+  while True:
+    if me.leader != str(me.id):
+      time.sleep(3)
+      msg = me.leader
+      sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+      me.leaderStatus = False
+      time.sleep(1)
+      if not me.leaderStatus:
+        election(sock)
 
 def receive_msgs(sock):
   while True:
@@ -59,6 +71,14 @@ def receive_msgs(sock):
             sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
         
         who_is_leader(sock, sender, msg)
+
+        if msg == me.id:
+          msg = 'Gut'
+          sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+
+        if sender == me.leader and msg == 'Gut':
+          me.leaderStatus = True
+
     except socket.timeout:
       continue
 
@@ -73,6 +93,7 @@ def mcast_client(myID, msg=''):
   sock.settimeout(1)
 
   threading.Thread(target=receive_msgs, args=(sock,), daemon=True).start()
+  threading.Thread(target=leader_health, args=(sock,), daemon=True).start()
 
   try:
     while True:
@@ -104,7 +125,7 @@ def election(sock):
   msg = 'Winner'
   sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
   me.accept_leader(me.id)
-
+  me.leaderStatus = True
   print(f'{me.id} my leader is {me.leader}')
 
 if __name__ == "__main__":
