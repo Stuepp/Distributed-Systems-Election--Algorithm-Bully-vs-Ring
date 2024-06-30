@@ -1,0 +1,16 @@
+Started election - send candidate:12 to 5
+recv from 2 - candidate:2
+send to 5 - candidate:12
+recv from 2 - candidate:6
+send to 5 - candidate:12
+recv from 2 - candidate:6
+send to 5 - candidate:12
+recv from 2 - candidate:6
+send to 5 - candidate:12
+recv from 2 - candidate:6
+send to 5 - candidate:12
+recv from 2 - candidate:12
+send to 5 - elected:12
+recv from 2 - elected:12
+Finished election:12
+Total messages: 7

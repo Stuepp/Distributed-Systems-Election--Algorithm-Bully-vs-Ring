@@ -1,0 +1,22 @@
+recv from 4 - candidate:5
+send to 2 - candidate:6
+Started election - send candidate:6 to 2
+recv from 4 - candidate:4
+send to 2 - candidate:6
+recv from 4 - candidate:4
+send to 2 - candidate:6
+recv from 4 - candidate:12
+send to 2 - candidate:12
+recv from 4 - candidate:12
+send to 2 - candidate:12
+recv from 4 - candidate:12
+send to 2 - candidate:12
+recv from 4 - candidate:12
+send to 2 - candidate:12
+recv from 4 - candidate:12
+send to 2 - candidate:12
+recv from 4 - candidate:12
+send to 2 - candidate:12
+recv from 4 - elected:12
+send to 2 - elected:12
+Total messages:11
