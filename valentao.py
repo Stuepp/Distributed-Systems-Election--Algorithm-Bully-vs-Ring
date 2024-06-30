@@ -21,11 +21,25 @@ class Process:
 
   def add_bullie(self,bullie):
     self.bullies.append(bullie)
+  
+  def accept_leader(self,leader):
+    self.leader = leader
 
 def is_bullie(sender):
   if sender > me.id and sender not in me.bullies:
     return True
   return False
+
+def who_is_leader(sock, sender, msg):
+  if msg == 'King':
+    if(sender < me.id):
+      election(sock)
+  if msg == 'Winner':
+    if(sender < me.id):
+      election(sock)
+    else:
+      me.accept_leader(sender)
+      print(f'{me.id} my leader is {me.leader}')
 
 def receive_msgs(sock):
   while True:
@@ -41,18 +55,10 @@ def receive_msgs(sock):
           if is_bullie(sender):
             me.add_bullie(sender)
             print(f'{me.id} - {me.bullies}')
-          else:
+          elif sender < me.id:
             sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
         
-        if msg == 'King':
-          if(sender < me.id):
-            election(sock)
-        if msg == 'Winner':
-          if(sender < me.id):
-            election(sock)
-          else:
-            me.leader = sender
-            print(f'{me.id} my leader is {me.leader}')
+        who_is_leader(sock, sender, msg)
     except socket.timeout:
       continue
 
@@ -71,29 +77,33 @@ def mcast_client(myID, msg=''):
   try:
     while True:
       if msg == '':
-        msg = input(f'\nType el for election: \nType "sair" to exit or send a msg as {myID}: ')
+        msg = input(f'\nType "who" to see your leader\nType "el" for election: \nType "sair" to exit or send a msg as {myID}: ')
         if msg.lower() == 'sair':
           break
         if msg.lower() == 'el':
           election(sock)
-      else:
+          msg=''
+        if msg.lower() == 'who':
+          print(f'{me.id} my leader is {me.leader}')
+          msg=''
+        else: # não tem uma msg predefinida
+          sock.sendto(f'{myID}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+          msg = ''
+      else: # já tem uma msg definida, no caso oi, logo tem que se eleger
         sock.sendto(f'{myID}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
         msg = ''
-      
-      sock.sendto(f'{myID}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
-      msg = ''
+        election(sock)
   finally:
     sock.close()
 
 
 def election(sock):
-  if me.leader == None:
-    msg = 'King'
-    sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
-    if me.leader == None:
-      msg = 'Winner'
-      sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
-      me.leader = me.id
+  msg = 'King'
+  sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+  time.sleep(0.5)
+  msg = 'Winner'
+  sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+  me.accept_leader(me.id)
 
   print(f'{me.id} my leader is {me.leader}')
 
