@@ -2,6 +2,7 @@ import socket
 import struct
 import threading
 import time
+from datetime import datetime
 
 MCAST_GROUP = '224.1.1.1'
 PORT = 5000
@@ -119,14 +120,23 @@ def mcast_client(myID, msg=''):
 
 
 def election(sock):
-  msg = 'King'
-  sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
-  time.sleep(0.5)
-  msg = 'Winner'
-  sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
-  me.accept_leader(me.id)
-  me.leaderStatus = True
-  print(f'{me.id} my leader is {me.leader}')
+  with open('bully.txt', 'w') as file:
+    msg = 'King'
+    sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+    
+    data_formatada = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    file.write(f'{me.id};{me.leader};{msg};{data_formatada}\n')
+    
+    time.sleep(0.5)
+    msg = 'Winner'
+    sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+    
+    data_formatada = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    file.write(f'{me.id};{me.leader};{msg};{data_formatada}\n')
+    
+    me.accept_leader(me.id)
+    me.leaderStatus = True
+    print(f'{me.id} my leader is {me.leader}')
 
 if __name__ == "__main__":
   me = Process(input("Digite o ID do processo: "))
