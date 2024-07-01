@@ -120,7 +120,7 @@ def mcast_client(myID, msg=''):
 
 
 def election(sock):
-  with open('bully.txt', 'w') as file:
+  with open('bully.txt', 'a') as file:
     msg = 'King'
     sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
     
