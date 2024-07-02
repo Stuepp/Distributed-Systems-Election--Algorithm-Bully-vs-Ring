@@ -44,6 +44,7 @@ def who_is_leader(sock, sender, msg):
       print(f'{me.id} my leader is {me.leader}')
 
 def leader_health(sock):
+  time.sleep(1)
   while True:
     if me.leader != str(me.id):
       time.sleep(3)
