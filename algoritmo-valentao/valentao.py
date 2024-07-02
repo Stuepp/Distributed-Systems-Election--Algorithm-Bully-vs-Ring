@@ -16,6 +16,7 @@ class Process:
     self.id = id
     self.leaderStatus = False
     self.leader = ''
+    self.elegible = True
     self.bullies = []
 
   def __strt__(self):
@@ -28,32 +29,36 @@ class Process:
     self.leader = leader
 
 def is_bullie(sender):
-  if sender > me.id and sender not in me.bullies:
+  if int(sender) > int(me.id) and int(sender) not in me.bullies:
     return True
   return False
 
 def who_is_leader(sock, sender, msg):
   if msg == 'King':
-    if(sender < me.id):
-      election(sock)
-  if msg == 'Winner':
-    if(sender < me.id):
+    if(int(sender) < int(me.id)):
       election(sock)
     else:
+      me.elegible = False
+  if msg == 'Winner':
+    if(int(sender) < int(me.id)):
+      election(sock)
+    else:
+      me.elegible = False
       me.accept_leader(sender)
       me.leaderStatus = True
       print(f'{me.id} my leader is {me.leader}')
 
 def leader_health(sock):
-  time.sleep(1)
+  time.sleep(5) # 20 aumenta , t origianal 1
   while True:
     if me.leader != str(me.id):
-      time.sleep(3)
+      time.sleep(12) # 20 aumenta , t origianal 3
       msg = me.leader
       sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
       me.leaderStatus = False
-      time.sleep(1)
+      time.sleep(5) # 20 aumenta , t origianal 1
       if not me.leaderStatus:
+        me.elegible = True
         election(sock)
 
 def receive_msgs(sock):
@@ -68,7 +73,7 @@ def receive_msgs(sock):
       if sender != me.id:
         if msg == 'oi':
           if is_bullie(sender):
-            me.add_bullie(sender)
+            me.add_bullie(int(sender))
             print(f'{me.id} - {me.bullies}')
           elif sender < me.id:
             sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
@@ -116,6 +121,8 @@ def mcast_client(myID, msg=''):
       else: # já tem uma msg definida, no caso oi, logo tem que se eleger
         sock.sendto(f'{myID}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
         msg = ''
+        sock.sendto(f'{myID}:{me.bullies}'.encode('utf-8'), (MCAST_GROUP, 5000))
+        time.sleep(20)
         election(sock)
   finally:
     sock.close()
@@ -123,21 +130,23 @@ def mcast_client(myID, msg=''):
 
 def election(sock):
   with open('bully.txt', 'a') as file:
-    msg = 'King'
-    sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
-    
-    data_formatada = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    file.write(f'{me.id};{me.leader};{msg};{data_formatada}\n')
-    
-    time.sleep(0.5)
-    msg = 'Winner'
-    sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
-    
-    data_formatada = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    file.write(f'{me.id};{me.leader};{msg};{data_formatada}\n')
-    
-    me.accept_leader(me.id)
-    me.leaderStatus = True
+    if me.elegible:
+      msg = 'King'
+      sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+
+      data_formatada = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+      file.write(f'{me.id};{me.leader};{msg};{data_formatada}\n')
+
+      time.sleep(3) # para 20 aumentar o tempo - t original 0.5
+      if me.elegible:
+        msg = 'Winner'
+        sock.sendto(f'{me.id}:{msg}'.encode('utf-8'), (MCAST_GROUP, 5000))
+
+        data_formatada = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        file.write(f'{me.id};{me.leader};{msg};{data_formatada}\n')
+
+        me.accept_leader(me.id)
+        me.leaderStatus = True
     print(f'{me.id} my leader is {me.leader}')
 
 if __name__ == "__main__":
