@@ -3,6 +3,7 @@ import struct
 import threading
 import time
 from datetime import datetime
+import sys
 
 MCAST_GROUP = '224.1.1.1'
 PORT = 5000
@@ -140,6 +141,7 @@ def election(sock):
     print(f'{me.id} my leader is {me.leader}')
 
 if __name__ == "__main__":
-  me = Process(input("Digite o ID do processo: "))
+  #me = Process(input("Digite o ID do processo: "))
+  me = Process(sys.argv[1])
 
   mcast_client(me.id, 'oi')
