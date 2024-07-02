@@ -1,0 +1,12 @@
+[2024-07-01 22:58:45.281072] started election - 5:candidate:5:1/5:candidate:5:-1- total messages:2
+[2024-07-01 22:58:45.315360] 12:candidate:12:1
+[2024-07-01 22:58:45.343677] 21:candidate:21:-1
+[2024-07-01 22:58:45.372509] 4:candidate:21:-1
+[2024-07-01 22:58:45.390070] 6:candidate:12:1
+[2024-07-01 22:58:45.404117] 4:elected:21:-1 - total messages: 7
+[2024-07-01 22:58:45.444344] 6:elected:21:1 - total messages: 8
+[2024-07-01 22:58:45.472513] 6:elected:21:-1 - total messages: 9
+[2024-07-01 22:58:45.496321] 4:elected:21:1 - total messages: 10
+[2024-07-01 22:58:46.370903] 1:candidate:21:-1
+[2024-07-01 22:58:46.415615] 1:elected:21:-1 - total messages: 12
+[2024-07-01 22:58:46.452693] 1:elected:21:1 - total messages: 13

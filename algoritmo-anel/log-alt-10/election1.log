@@ -1,0 +1,7 @@
+[2024-07-01 22:58:45.294649] 4:candidate:4:-1
+[2024-07-01 22:58:45.337873] 6:candidate:6:-1
+[2024-07-01 22:58:45.415584] 5:candidate:12:-1
+[2024-07-01 22:58:45.462615] 12:candidate:12:-1
+[2024-07-01 22:58:45.491192] 21:candidate:21:-1
+[2024-07-01 22:58:46.286840] started election - 1:candidate:1:1/1:candidate:1:-1- total messages:7
+[2024-07-01 22:58:46.557732] finished election: 8 - total messages:7

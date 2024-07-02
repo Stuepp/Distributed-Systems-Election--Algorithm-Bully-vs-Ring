@@ -1,0 +1,10 @@
+[2024-07-01 16:29:07.813912] 12:candidate:12 - Total messages:0
+[2024-07-01 16:29:07.852067] 4:candidate:12 - Total messages:1
+[2024-07-01 16:29:07.881083] 1:candidate:12 - Total messages:2
+[2024-07-01 16:29:07.908913] 7:candidate:12 - Total messages:3
+[2024-07-01 16:29:07.959121] 21:candidate:21 - Total messages:4
+[2024-07-01 16:29:07.966901] 12:elected:21 - Total messages:5
+[2024-07-01 16:29:08.026884] 4:elected:21 - Total messages:6
+[2024-07-01 16:29:08.032967] 1:elected:21 - Total messages:7
+[2024-07-01 16:29:08.082778] 7:elected:21 - Total messages:8
+[2024-07-01 16:29:08.125772] 21:elected:21 - Total messages:9

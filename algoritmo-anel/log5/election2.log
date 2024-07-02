@@ -1,0 +1,6 @@
+[2024-07-01 16:28:32.671505] 4:candidate:6 - Total messages:0
+[2024-07-01 16:28:32.697572] 1:candidate:6 - Total messages:1
+[2024-07-01 16:28:32.725279] 12:candidate:12 - Total messages:2
+[2024-07-01 16:28:32.765702] 4:elected:12 - Total messages:3
+[2024-07-01 16:28:32.798115] 1:elected:12 - Total messages:4
+[2024-07-01 16:28:32.827332] 12:elected:12 - Total messages:5

@@ -1,0 +1,34 @@
+[2024-07-01 23:04:29.906047] 12:candidate:20:1
+[2024-07-01 23:04:30.011836] started election - 20:candidate:20:1/20:candidate:20:-1- total messages:4
+[2024-07-01 23:04:30.056568] 14:candidate:20:1
+[2024-07-01 23:04:30.149998] 7:candidate:21:-1
+[2024-07-01 23:04:30.255425] 5:candidate:20:1
+[2024-07-01 23:04:30.348173] 18:candidate:27:-1
+[2024-07-01 23:04:30.390191] 23:candidate:27:-1
+[2024-07-01 23:04:30.474280] 4:candidate:20:1
+[2024-07-01 23:04:30.476212] 24:candidate:27:-1
+[2024-07-01 23:04:30.568046] 29:candidate:29:1
+[2024-07-01 23:04:30.836921] 16:candidate:27:-1
+[2024-07-01 23:04:30.888533] 16:elected:29:-1 - total messages: 13
+[2024-07-01 23:04:31.023453] 16:elected:29:1 - total messages: 14
+[2024-07-01 23:04:31.126381] 21:candidate:21:-1
+[2024-07-01 23:04:31.313747] 29:elected:29:-1 - total messages: 16
+[2024-07-01 23:04:31.445124] 23:elected:29:1 - total messages: 17
+[2024-07-01 23:04:31.712541] 12:elected:29:-1 - total messages: 18
+[2024-07-01 23:04:31.886786] 4:elected:29:-1 - total messages: 19
+[2024-07-01 23:04:32.015671] 24:elected:29:1 - total messages: 20
+[2024-07-01 23:04:32.017135] 5:elected:29:-1 - total messages: 21
+[2024-07-01 23:04:32.018489] 6:candidate:20:1
+[2024-07-01 23:04:32.136382] finished election: 29 - total messages:22
+[2024-07-01 23:04:32.196761] 18:elected:29:1 - total messages: 23
+[2024-07-01 23:04:32.309277] 1:candidate:20:1
+[2024-07-01 23:04:32.350747] 14:elected:29:-1 - total messages: 25
+[2024-07-01 23:04:32.489699] 9:candidate:29:-1
+[2024-07-01 23:04:32.715339] 9:elected:29:-1 - total messages: 27
+[2024-07-01 23:04:32.835957] 1:elected:29:1 - total messages: 28
+[2024-07-01 23:04:32.889266] 1:elected:29:-1 - total messages: 29
+[2024-07-01 23:04:32.988948] 7:elected:29:1 - total messages: 30
+[2024-07-01 23:04:33.096974] 9:elected:29:1 - total messages: 31
+[2024-07-01 23:04:33.206518] finished election: 29 - total messages:31
+[2024-07-01 23:04:33.491219] 6:elected:29:-1 - total messages: 32
+[2024-07-01 23:04:33.653450] 21:elected:29:1 - total messages: 33
