@@ -1,0 +1,19 @@
+[2024-07-01 16:33:10.741464] started election - 2:candidate:2
+[2024-07-01 16:33:10.815606] 6:candidate:6 - Total messages:1
+[2024-07-01 16:33:10.919887] 9:candidate:9 - Total messages:2
+[2024-07-01 16:33:11.015369] 16:candidate:29 - Total messages:3
+[2024-07-01 16:33:11.085283] 24:candidate:29 - Total messages:4
+[2024-07-01 16:33:11.101468] 21:candidate:29 - Total messages:5
+[2024-07-01 16:33:11.130352] 7:candidate:29 - Total messages:6
+[2024-07-01 16:33:11.166959] 20:candidate:29 - Total messages:7
+[2024-07-01 16:33:11.205922] 14:candidate:29 - Total messages:8
+[2024-07-01 16:33:11.239862] 2:elected:29 - Total messages:9
+[2024-07-01 16:33:11.264390] 6:elected:29 - Total messages:10
+[2024-07-01 16:33:11.420049] 9:elected:29 - Total messages:11
+[2024-07-01 16:33:11.470586] 16:elected:29 - Total messages:12
+[2024-07-01 16:33:11.556983] 24:elected:29 - Total messages:13
+[2024-07-01 16:33:11.624923] 21:elected:29 - Total messages:14
+[2024-07-01 16:33:11.745945] 7:elected:29 - Total messages:15
+[2024-07-01 16:33:11.899769] 20:elected:29 - Total messages:16
+[2024-07-01 16:33:11.944687] 14:elected:29 - Total messages:17
+[2024-07-01 16:33:11.974628] finished election: 29 - Total messges:18

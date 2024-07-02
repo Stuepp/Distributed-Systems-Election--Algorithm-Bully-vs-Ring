@@ -1,0 +1,11 @@
+[2024-07-01 16:29:07.809449] started election - 21:candidate:21
+[2024-07-01 16:29:07.843506] 12:candidate:21 - Total messages:1
+[2024-07-01 16:29:07.871710] 4:candidate:21 - Total messages:2
+[2024-07-01 16:29:07.917112] 1:candidate:21 - Total messages:3
+[2024-07-01 16:29:07.946775] 7:candidate:21 - Total messages:4
+[2024-07-01 16:29:07.985594] 21:elected:21 - Total messages:5
+[2024-07-01 16:29:08.014916] 12:elected:21 - Total messages:6
+[2024-07-01 16:29:08.068048] 4:elected:21 - Total messages:7
+[2024-07-01 16:29:08.096436] 1:elected:21 - Total messages:8
+[2024-07-01 16:29:08.140798] 7:elected:21 - Total messages:9
+[2024-07-01 16:29:08.179349] finished election: 21 - Total messges:10
